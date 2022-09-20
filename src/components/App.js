@@ -5,6 +5,20 @@ import Details from "./Details";
 function App() {
   console.log("Here's your data:", video);
 
+  const commentArray = video.comments;
+  console.log(commentArray);
+
+  function AllComments() {
+    return commentArray.map((comment) => {
+      return (
+        <div key={comment.id}>
+          <h3>{comment.user}</h3>
+          <p>{comment.comment}</p>
+        </div>
+      );
+    });
+  }
+
   return (
     <div className="App">
       <iframe
@@ -23,6 +37,9 @@ function App() {
         upVotes={video.upvotes}
         downVotes={video.downvotes}
       />
+      <hr></hr>
+      <h2>{commentArray.length} Comments</h2>
+      <AllComments />
     </div>
   );
 }

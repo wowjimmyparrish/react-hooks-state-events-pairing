@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 
 function Details({ views, time, upVotes, downVotes }) {
-  const [upVote, setUpVote] = useState();
-  const [downVote, setDownVote] = useState();
+  const [upVote, setUpVote] = useState(upVotes);
+  const [downVote, setDownVote] = useState(downVotes);
   const [HideComments, setHideComments] = useState();
 
   function handleUpClick() {
-    return console.log("Upclick");
+    setUpVote(upVote + 1);
+    console.log(upVote);
   }
   function handleDownClick() {
-    return console.log("downClick");
+    setDownVote(downVote + 1);
+    console.log(downVote);
   }
   function handleHideClick() {
-    return console.log("hideClick");
+    console.log("Click");
   }
 
   return (
@@ -20,11 +22,12 @@ function Details({ views, time, upVotes, downVotes }) {
       <p>
         {views} Views | Uploaded {time}
       </p>
-      <button onClick={handleUpClick}>{upVotes}👍</button>
-      <button onClick={handleDownClick}>{downVotes}👎</button>
+      <button onClick={handleUpClick}>{upVote}👍</button>
+      <button onClick={handleDownClick}>{downVote}👎</button>
       <p>
         <button onClick={handleHideClick}>Hide Comments</button>
       </p>
+      <p></p>
     </div>
   );
 }
